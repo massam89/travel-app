@@ -15,15 +15,17 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <>
       <Header changeBucket={changeBucketPageHandler} isBucketPage={isBucketPage} />
-      <Routes>
-        <Route index element={<ResortsList />} />
-        <Route path="resorts/:id" element={<ResortDetails />} />
-        <Route path="bucket" element={<Bucket />} />
-        <Route path="*" element={<NoPage />} />
-      </Routes>
-    </div>
+      <main>
+        <Routes>
+          <Route index element={<ResortsList />} />
+          <Route path="resorts/:id" element={<ResortDetails />} />
+          <Route path="bucket" element={<Bucket />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </main>   
+    </>
   );
 }
 
