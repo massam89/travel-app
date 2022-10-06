@@ -34,6 +34,14 @@ const reducer = (state,action) => {
     const sortResort = sortArray(state.allResorts, action.payload.column, action.payload.sort)
     return {...state, showResorts: sortResort}
   }
+
+  if(action.type === 'FILTER'){
+    if(action.data === 'all'){
+      return {...state, showResorts: state.allResorts}
+    }
+    const filterResorts = state.allResorts.filter(item => item.title === action.data || item.pricePlus === +action.data)
+    return {...state, showResorts: filterResorts}
+  }
   return initialState
 }
 
@@ -57,10 +65,20 @@ const ContextProvider = (props) => {
     dispatch({type: 'SORT', payload: data})
   }
 
+  const filterHandler = (data) => {
+    dispatch({type: 'FILTER', data: data})
+  }
+
+  const contextItems = {
+    state,
+    addBucketHandler,
+    deleteBucketHandler,
+    sortHandler,
+    filterHandler
+   }
+
   return (
-    <Context.Provider value={{ state, addBucketHandler, deleteBucketHandler, sortHandler }}>
-      {props.children}
-    </Context.Provider>
+    <Context.Provider value={contextItems}>{props.children}</Context.Provider>
   ) 
 }
 
