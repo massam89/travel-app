@@ -1,5 +1,6 @@
 import React, {useEffect, useReducer} from "react";
 import data from '../data/data.json'
+import { sortArray } from "../lib/helper";
 export const Context = React.createContext()
 
 const initialState = {
@@ -11,8 +12,8 @@ const initialState = {
 
 const reducer = (state,action) => {
   if(action.type === 'GET-ALL-RESORTS'){
-    const dataWithBucket = action.data.map(item => {return {...item, inBucket: false}})
-    return {...state, allResorts: action.data, showResorts: dataWithBucket }
+    const dataWithBucketAndPricePlus = action.data.map(item => {return {...item, inBucket: false, pricePlus: +item.price.replace('$','')}})
+    return {...state, allResorts: dataWithBucketAndPricePlus, showResorts: dataWithBucketAndPricePlus }
   }
 
   if(action.type === 'ADD-TO-BUCKET'){
@@ -23,9 +24,15 @@ const reducer = (state,action) => {
       return{...state, bucket: [...state.bucket, selectedResort]}
     }
   }
+
   if(action.type === 'REMOVE-FROM-BUCKET'){
     const newBucket = state.bucket.filter(item => +item.id !== action.id)
     return {...state, bucket: newBucket}
+  }
+
+  if(action.type === 'SORT'){
+    const sortResort = sortArray(state.allResorts, action.payload.column, action.payload.sort)
+    return {...state, showResorts: sortResort}
   }
   return initialState
 }
@@ -46,11 +53,12 @@ const ContextProvider = (props) => {
     dispatch({type: 'REMOVE-FROM-BUCKET', id: id})
   }
 
-  console.log(state);
-
+  const sortHandler = (data) => {
+    dispatch({type: 'SORT', payload: data})
+  }
 
   return (
-    <Context.Provider value={{ state, addBucketHandler, deleteBucketHandler }}>
+    <Context.Provider value={{ state, addBucketHandler, deleteBucketHandler, sortHandler }}>
       {props.children}
     </Context.Provider>
   ) 
