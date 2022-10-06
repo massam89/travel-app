@@ -9,12 +9,13 @@ const ResortItem = (props) => {
   const buttonHandler = () => {
     addBucketHandler(props.resort.id);
   }
+  
   return (
     <>
       <td><Link to={`/resorts/${props.resort.id}`}>{props.resort.title}</Link></td>
       <td>{props.resort.description.substring(0, 200) + '...'}</td>
       <td>{props.resort.price}</td>
-      <td><img src={props.resort.imageUrl} width='64'/></td>
+      <td><img src={props.resort.imageUrl} width='64' alt={props.resort.title}/></td>
       <td><button onClick={buttonHandler}>Add</button></td>
     </>
    

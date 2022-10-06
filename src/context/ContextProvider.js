@@ -23,7 +23,10 @@ const reducer = (state,action) => {
       return{...state, bucket: [...state.bucket, selectedResort]}
     }
   }
-  
+  if(action.type === 'REMOVE-FROM-BUCKET'){
+    const newBucket = state.bucket.filter(item => +item.id !== action.id)
+    return {...state, bucket: newBucket}
+  }
   return initialState
 }
 
@@ -39,11 +42,15 @@ const ContextProvider = (props) => {
     dispatch({type: 'ADD-TO-BUCKET', id: id})
   }
 
+  const deleteBucketHandler = (id) => {
+    dispatch({type: 'REMOVE-FROM-BUCKET', id: id})
+  }
+
   console.log(state);
 
 
   return (
-    <Context.Provider value={{ state, addBucketHandler }}>
+    <Context.Provider value={{ state, addBucketHandler, deleteBucketHandler }}>
       {props.children}
     </Context.Provider>
   ) 
