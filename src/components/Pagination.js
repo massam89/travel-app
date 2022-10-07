@@ -1,6 +1,27 @@
+import { useContext } from "react"
+import { Context } from "../context/ContextProvider"
+
 const Pagination = (props) => {
+  const {state, paginateHandler} = useContext(Context)
+  const pageNumber = Math.round(state.allResorts.length/20);
+
+  const pageNumberArray = []
+  for(let i = 1 ; i <= pageNumber; i++){
+    pageNumberArray.push(i);
+  }
+
+  const clickPageHandler = (e) => {
+    paginateHandler(e.target.innerText);
+  }
+
   return (
-    <h2>Hello from pagination</h2>
+    <div>
+      <ul>
+        {pageNumberArray.map((item,index) => 
+          <li onClick={clickPageHandler} key={index}>{item}</li>
+        )}
+      </ul>
+    </div>
   )
 }
 

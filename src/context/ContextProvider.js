@@ -6,14 +6,13 @@ export const Context = React.createContext()
 const initialState = {
   allResorts: [],
   showResorts: [],
-  bucket:[],
-  addBucketHandler: () => {}
+  bucket:[]
 }
 
 const reducer = (state,action) => {
   if(action.type === 'GET-ALL-RESORTS'){
     const dataWithBucketAndPricePlus = action.data.map(item => {return {...item, inBucket: false, pricePlus: +item.price.replace('$','')}})
-    return {...state, allResorts: dataWithBucketAndPricePlus, showResorts: dataWithBucketAndPricePlus }
+    return {...state, allResorts: dataWithBucketAndPricePlus, showResorts: dataWithBucketAndPricePlus.slice(0, 20) }
   }
 
   if(action.type === 'ADD-TO-BUCKET'){
@@ -32,15 +31,22 @@ const reducer = (state,action) => {
 
   if(action.type === 'SORT'){
     const sortResort = sortArray(state.allResorts, action.payload.column, action.payload.sort)
-    return {...state, showResorts: sortResort}
+    return {...state, showResorts: sortResort.slice(0,20)}
   }
 
   if(action.type === 'FILTER'){
     if(action.data === 'all'){
-      return {...state, showResorts: state.allResorts}
+      return {...state, showResorts: state.allResorts.slice(0,20)}
     }
     const filterResorts = state.allResorts.filter(item => item.title === action.data || item.pricePlus === +action.data)
-    return {...state, showResorts: filterResorts}
+    return {...state, showResorts: filterResorts.slice(0,20)}
+  }
+  if(action.type === 'PAGINATION'){
+    const pageNumber = +action.data
+
+    const paginatedResorts = state.allResorts.slice((pageNumber-1)*20, pageNumber*20)
+    
+    return {...state, showResorts: paginatedResorts}
   }
   return initialState
 }
@@ -69,12 +75,17 @@ const ContextProvider = (props) => {
     dispatch({type: 'FILTER', data: data})
   }
 
+  const paginateHandler = (data) => {
+    dispatch({type: 'PAGINATION', data:data})
+  }
+
   const contextItems = {
     state,
     addBucketHandler,
     deleteBucketHandler,
     sortHandler,
-    filterHandler
+    filterHandler,
+    paginateHandler
    }
 
   return (

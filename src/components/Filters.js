@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import {Context} from '../context/ContextProvider'
-const Filters = (props) => {
-  const {state, filterHandler} = useContext(Context)
 
+const Filters = (props) => {
+
+  const {state, filterHandler} = useContext(Context)
   const [title, setTitle] = useState('default')
   const [price, setPrice] = useState('default')
 
@@ -15,6 +16,7 @@ const Filters = (props) => {
   })
 
   const selectHandler = (e) => {
+    // eslint-disable-next-line
     if(e.target.value == +e.target.value){
       setTitle('default')
       setPrice(e.target.value)
@@ -25,8 +27,7 @@ const Filters = (props) => {
       setPrice('default')
       setTitle(e.target.value) 
     }
-    
-    
+
     filterHandler(e.target.value)
   }
 
