@@ -1,0 +1,37 @@
+.details {
+ 
+}
+
+.details img {
+  width: 60%;
+  margin: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.details h2 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.details p:nth-child(2) {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.details p:nth-child(3) {
+  font-size: 2rem;
+  background-color: rgb(195, 34, 34);
+  display: inline-block;
+  padding: 10px;
+  color: var(--grey);
+}
+
+.details button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+}
+.details button:active {
+  background-color: rgb(200, 27, 27);
+}

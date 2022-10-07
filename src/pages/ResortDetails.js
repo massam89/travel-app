@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import {useParams} from 'react-router-dom'
 import { Context } from '../context/ContextProvider';
+import styles from '../css/module/ResortDetails.module.css'
 
 const ResortDetails = (props) => {
 
@@ -14,7 +15,7 @@ const ResortDetails = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.details}>
       <h2>{resort.title}</h2>
       <p>{resort.description}</p>
       <p>{resort.price}</p>

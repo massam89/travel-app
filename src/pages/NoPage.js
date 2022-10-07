@@ -1,6 +1,8 @@
+import styles from '../css/module/NoPage.module.css'
+
 const NoPage = (props) => {
   return (
-    <h2>Page not found</h2>
+    <h2 className={styles.nopage}>Page not found</h2>
   )
 }
 

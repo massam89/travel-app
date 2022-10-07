@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Context } from "../context/ContextProvider"
+import styles from '../css/module/Bucket.module.css'
 
 const Bucket = (props) => {
   const {state, deleteBucketHandler} = useContext(Context)
@@ -9,7 +10,7 @@ const Bucket = (props) => {
   }
 
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
           <th>Title</th>
