@@ -8,6 +8,7 @@ const ResrotItems = (props) => {
   const { state } = useContext(Context);
   const {isUp:titleIsUp, upHandler: titleUpHandler, downHandler: titleDownHandler} = useSort()
   const {isUp:priceIsUp, upHandler: priceUpHandler, downHandler: priceDownHandler} = useSort()
+  
   return (
     <table className={styles.table}>
       <thead>
