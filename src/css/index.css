@@ -1,5 +1,9 @@
 :root {
-
+  --dark: #D8D9CF;
+  --grey: #EDEDED;
+  --red: #FF8787;
+  --red-dark: #E26868;
+  font-size: 12px;
 }
 
 * {
@@ -9,5 +13,30 @@
 }
 
 body {
-  
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  background-color: var(--grey);
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px ;
+  background-color: var(--red-dark);
+  color: var(--grey);
+}
+
+li {
+  list-style-type: none;
 }

@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination ul {
+  display: flex;
+  font-size: 1.5rem;
+}
+.pagination li {
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+.pagination li:hover {
+  color: var(--red-dark);
+}
+

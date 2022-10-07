@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Context } from "../context/ContextProvider"
+import styles from '../css/module/Pagination.module.css'
 
 const Pagination = (props) => {
   const {state, paginateHandler} = useContext(Context)
@@ -15,7 +16,7 @@ const Pagination = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.pagination}>
       <ul>
         {pageNumberArray.map((item,index) => 
           <li onClick={clickPageHandler} key={index}>{item}</li>

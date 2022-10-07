@@ -1,0 +1,12 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filters select {
+  font-size: 1.1rem;
+  padding: 5px;
+  margin-bottom: 10px;
+  outline: none;
+}

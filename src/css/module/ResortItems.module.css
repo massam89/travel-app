@@ -1,0 +1,40 @@
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.table td {
+  padding: 10px 10px;
+  text-align: left;
+}
+
+.table th {
+  padding: 5px 10px;
+  text-align: left;
+  background-color: var(--red-dark);
+  color: var(--grey);
+}
+
+.table th:nth-child(3) {
+  width: 90px;
+}
+
+.table img {
+  width: 80%;
+}
+
+.table a:hover {
+  color: rgb(220, 11, 11);
+}
+
+.table i {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.table button:active {
+  background-color: rgb(205, 22, 22);
+}
+

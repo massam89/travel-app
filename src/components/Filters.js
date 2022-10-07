@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import {Context} from '../context/ContextProvider'
+import styles from '../css/module/Filters.module.css'
 
 const Filters = (props) => {
 
@@ -32,7 +33,7 @@ const Filters = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.filters}>
         <select onChange={selectHandler} value={title}>
           <option disabled value='default'>Select a title</option>
           <option value='all'>All</option>

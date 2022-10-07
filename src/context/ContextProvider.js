@@ -1,6 +1,7 @@
 import React, {useEffect, useReducer} from "react";
 import data from '../data/data.json'
 import { sortArray } from "../lib/helper";
+
 export const Context = React.createContext()
 
 const initialState = {
@@ -41,11 +42,10 @@ const reducer = (state,action) => {
     const filterResorts = state.allResorts.filter(item => item.title === action.data || item.pricePlus === +action.data)
     return {...state, showResorts: filterResorts.slice(0,20)}
   }
+
   if(action.type === 'PAGINATION'){
     const pageNumber = +action.data
-
     const paginatedResorts = state.allResorts.slice((pageNumber-1)*20, pageNumber*20)
-    
     return {...state, showResorts: paginatedResorts}
   }
   return initialState

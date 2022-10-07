@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Context } from "../context/ContextProvider";
 import ResortItem from "./ResortItem";
 import useSort from "../hooks/useSort";
+import styles from "../css/module/ResortItems.module.css"
 
 const ResrotItems = (props) => {
   const { state } = useContext(Context);
   const {isUp:titleIsUp, upHandler: titleUpHandler, downHandler: titleDownHandler} = useSort()
   const {isUp:priceIsUp, upHandler: priceUpHandler, downHandler: priceDownHandler} = useSort()
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
           <th data-column="title">
